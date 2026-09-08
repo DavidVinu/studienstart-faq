@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studienstart Medizin Heidelberg: Fragen und Antworten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c2430;
+    --ink-soft: #5b6573;
+    --paper: #ffffff;
+    --surface: #f3f5f7;
+    --line: #dde2e8;
+    --red: #b5121b;
+    --focus: #1e3a5f;
+    --c-start: #b5121b;
+    --c-praep: #1e3a5f;
+    --c-lernen: #0f7c6b;
+    --c-leben: #6b3fa0;
+    --serif: "Source Serif 4", "Iowan Old Style", "Charter", Georgia, serif;
+    --sans: "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  a { color: var(--red); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 80px; }
+
+  /* Kopf */
+  header { padding: 56px 0 28px; }
+  .who { font-size: 15px; color: var(--ink-soft); margin: 0 0 18px; }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(34px, 6vw, 48px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0 0 16px;
+  }
+  .lede { font-size: 19px; color: var(--ink-soft); margin: 0; max-width: 60ch; }
+
+  /* Suche + Filter */
+  .controls { position: sticky; top: 0; background: var(--paper); padding: 12px 0 14px; z-index: 5; border-bottom: 1px solid var(--line); }
+  .search {
+    display: flex; align-items: center; gap: 10px;
+    border: 1.5px solid var(--line); border-radius: 6px; padding: 8px 12px; background: var(--paper);
+  }
+  .search:focus-within { border-color: var(--ink); }
+  .search svg { flex: none; color: var(--ink-soft); }
+  .search input { flex: 1; border: 0; outline: 0; font: inherit; font-size: 17px; background: transparent; color: var(--ink); min-width: 0; }
+  .search input::placeholder { color: #98a1ac; }
+  .search button { border: 0; background: transparent; color: var(--ink-soft); cursor: pointer; font: inherit; padding: 2px 4px; display: none; }
+  .search.has-text button { display: inline; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .chip {
+    font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+    border: 1.5px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 5px 12px; border-radius: 999px;
+  }
+  .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .chip .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 7px; vertical-align: 1px; background: var(--dot, var(--ink)); }
+  .chip[aria-pressed="true"] .dot { background: #fff; }
+  .meta { display: flex; justify-content: space-between; align-items: baseline; margin-top: 12px; font-size: 14px; color: var(--ink-soft); }
+  .meta button { border: 0; background: transparent; color: var(--ink-soft); cursor: pointer; font: inherit; font-size: 14px; text-decoration: underline; text-underline-offset: 3px; padding: 0; }
+
+  /* Gruppen */
+  section.group { margin-top: 40px; }
+  section.group h2 {
+    font-family: var(--serif); font-weight: 600; font-size: 22px; margin: 0 0 4px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  section.group h2::before { content: ""; width: 12px; height: 12px; border-radius: 2px; background: var(--c); flex: none; }
+  section.group .intro { margin: 0 0 14px; color: var(--ink-soft); font-size: 15px; }
+  section.group[hidden] { display: none; }
+
+  /* Fragen */
+  details.q { border-top: 1px solid var(--line); }
+  details.q:last-child { border-bottom: 1px solid var(--line); }
+  details.q[hidden] { display: none; }
+  details.q summary {
+    list-style: none; cursor: pointer;
+    display: grid; grid-template-columns: 1fr 24px; gap: 12px; align-items: start;
+    padding: 16px 0 16px 16px; position: relative;
+    font-family: var(--serif); font-weight: 500; font-size: 20px; line-height: 1.3;
+  }
+  details.q summary::-webkit-details-marker { display: none; }
+  details.q summary::before { content: ""; position: absolute; left: 0; top: 18px; bottom: 18px; width: 3px; border-radius: 2px; background: var(--c); }
+  details.q summary .arrow { width: 24px; height: 24px; color: var(--ink-soft); transition: transform .18s ease; margin-top: 2px; }
+  details.q[open] summary .arrow { transform: rotate(180deg); }
+  @media (prefers-reduced-motion: reduce) { details.q summary .arrow { transition: none; } }
+  .a { padding: 0 0 22px 16px; max-width: 62ch; }
+  .a p { margin: 0 0 12px; }
+  .a p:last-child, .a ul:last-child { margin-bottom: 0; }
+  .a ul { margin: 0 0 12px; padding-left: 20px; }
+  .a li { margin-bottom: 6px; }
+  .kurz { font-weight: 600; }
+  .kurz::before { content: "Kurz: "; color: var(--c); }
+  .links { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 12px; font-size: 15px; }
+  .links a { font-weight: 600; }
+  .note { font-size: 14px; color: var(--ink-soft); background: var(--surface); padding: 8px 12px; border-radius: 4px; margin-top: 10px; }
+  mark { background: #fde68a; color: inherit; padding: 0 1px; border-radius: 2px; }
+
+  .empty { margin-top: 48px; color: var(--ink-soft); }
+  .empty[hidden] { display: none; }
+
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 15px; color: var(--ink-soft); }
+  footer p { margin: 0 0 8px; }
+
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    header { padding-top: 36px; }
+    details.q summary { font-size: 18px; }
+    .lede { font-size: 17px; }
+  }
+  @media print {
+    .controls { display: none; }
+    details.q { break-inside: avoid; }
+    details.q > .a { display: block !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="who">Von Leonard und David, eure Buddies der Fachschaft Medizin Heidelberg</p>
+  <h1>Fragen, die wir im ersten Semester gerne früher beantwortet gehabt hätten.</h1>
+  <p class="lede">Alles hier ist Erfahrung aus dem ersten Studienjahr, keine offizielle Auskunft. Wenn etwas fehlt oder nicht mehr stimmt, schreibt uns.</p>
+</header>
+
+<div class="controls">
+  <label class="search" id="searchbox">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="search" type="search" placeholder="Suchen, z. B. Handschuhe, Anki, Fahrrad" aria-label="Fragen durchsuchen" autocomplete="off">
+    <button type="button" id="clear" aria-label="Suche löschen">✕</button>
+  </label>
+  <div class="chips" role="group" aria-label="Nach Thema filtern">
+    <button class="chip" type="button" data-cat="all" aria-pressed="true">Alle</button>
+    <button class="chip" type="button" data-cat="start" aria-pressed="false" style="--dot: var(--c-start)"><span class="dot"></span>Vor dem Start</button>
+    <button class="chip" type="button" data-cat="praep" aria-pressed="false" style="--dot: var(--c-praep)"><span class="dot"></span>Präpkurs</button>
+    <button class="chip" type="button" data-cat="lernen" aria-pressed="false" style="--dot: var(--c-lernen)"><span class="dot"></span>Lernen und Material</button>
+    <button class="chip" type="button" data-cat="leben" aria-pressed="false" style="--dot: var(--c-leben)"><span class="dot"></span>Neben dem Studium</button>
+  </div>
+  <div class="meta">
+    <span id="count"></span>
+    <button type="button" id="toggleAll">Alle aufklappen</button>
+  </div>
+</div>
+
+<main id="faq">
+
+<!-- ============ VOR DEM START ============ -->
+<section class="group" data-cat="start" style="--c: var(--c-start)">
+  <h2>Vor dem Start</h2>
+  <p class="intro">Dinge, die ihr am besten vor der ersten Vorlesung erledigt habt.</p>
+
+  <details class="q">
+    <summary>Was sollte ich mit meiner Uni-ID sofort einrichten?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Uni-Mail, eduroam, heiCO und Microsoft 365. Moodle wird in der Erstiwoche freigeschaltet.</p>
+      <p>Die Uni-ID bekommt ihr mit der Immatrikulation, sie steht auch auf dem Studierendenausweis. Damit laufen fast alle Dienste: Uni-Mail (bitte regelmäßig lesen, die Fakultät kommuniziert fast nur darüber), das WLAN eduroam, das Campus-Portal heiCO, Moodle für Kursmaterial und die Cloud heiBOX.</p>
+      <p>Microsoft 365 (Word, Excel, PowerPoint, OneNote, Teams) ist für Studierende kostenlos, muss aber einmalig über das Lizenzportal der Uni freigeschaltet werden. Das geht nur aus dem Uni-Netz oder per VPN. Installieren dürft ihr es auf bis zu fünf Geräten.</p>
+      <div class="links">
+        <a href="https://www.urz.uni-heidelberg.de/de/newsroom/studienstart-informationen-fuer-studierende" target="_blank" rel="noopener">URZ: Studienstart-Infos</a>
+        <a href="https://fsmed-hd.de/ersti/moodle/" target="_blank" rel="noopener">Fachschaft: Moodle für Erstis</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary>Brauche ich ein Fahrrad?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Ja, aber nicht sofort kaufen. Die blauen nextbikes sind für euch 30 Minuten pro Fahrt kostenlos.</p>
+      <p>Alle Studierenden der Uni Heidelberg können nextbike beliebig oft am Tag nutzen, jede Fahrt bis 30 Minuten kostenlos. Das reicht in Heidelberg für fast jede Strecke, auch vom Neuenheimer Feld in die Altstadt. Zwischen zwei Fahrten müssen 15 Minuten liegen, danach kostet jede weitere halbe Stunde 50 Cent. Das Rad muss an einer Station abgestellt werden.</p>
+      <p>So geht die Anmeldung: nextbike-App laden, mit der Uni-Mail-Adresse registrieren, E-Mail bestätigen, dann in der App dem Partnerprogramm <em>CampusRad – Heidelberg University</em> beitreten. Das Angebot gilt übrigens in fast allen deutschen nextbike-Städten.</p>
+      <p>Wer später ein eigenes Rad will: In der studentischen Werkstatt URRmEL könnt ihr es selbst reparieren, Werkzeug und Beratung gibt es vor Ort.</p>
+      <div class="links">
+        <a href="https://www.stura.uni-heidelberg.de/angebote/vrnnextbike/" target="_blank" rel="noopener">StuRa: nextbike für Studierende</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary>Soll ich zur Erstiwoche gehen?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Ja, zumindest teilweise. Ihr lernt dort die Leute kennen, mit denen ihr die nächsten sechs Jahre verbringt.</p>
+      <p>Die Erstiwoche organisiert die Fachschaft, sie findet in der Woche vor dem offiziellen Vorlesungsbeginn statt. Es geht weniger um Fachliches als um Campus, Stadt und Kennenlernen. Das Programm und die Termine stehen auf der Fachschaftsseite, Infos kommen außerdem per Uni-Mail und über die Jahrgangs-WhatsApp-Gruppe.</p>
+      <p>Ihr müsst nicht bei allem dabei sein. Aber die ersten zwei Tage und mindestens einen Abend würden wir nicht auslassen.</p>
+      <div class="links">
+        <a href="https://fsmed-hd.de/ersti/erstiwoche/" target="_blank" rel="noopener">Erstiwoche: Programm und Termine</a>
+        <a href="https://fsmed-hd.de/ersti/ersti-faq/" target="_blank" rel="noopener">Ersti-FAQ der Fachschaft</a>
+        <a href="https://www.instagram.com/erstiwochehd.med/" target="_blank" rel="noopener">Instagram @erstiwochehd.med</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary>Wo bekomme ich Kittel und Namensschild?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Rechtzeitig besorgen, ihr braucht beides ab dem ersten Kurs mit Patientenkontakt und im Präpkurs.</p>
+      <p>Ein weißer Kittel und ein Namensschild sind Pflicht, sobald ihr in Klinik oder Präpsaal steht. Beides gibt es über die Fachschaft (in der Erstiwoche wird das meist angeboten) oder online. Ein einfacher Baumwollkittel reicht völlig, ihr werdet ihn im Präpkurs ohnehin nicht mehr schön halten.</p>
+      <div class="note">Genaue Termine für den Kittelverkauf kommen in der Erstiwoche. Fragt uns, wenn ihr sie verpasst habt.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary>Lohnt es sich, schon jetzt nach Stipendien zu schauen?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Ja. Viele Programme nehmen ab dem ersten oder zweiten Semester auf, und die Fristen sind früher als man denkt.</p>
+      <p>Die bekanntesten Wege: das Deutschlandstipendium der Uni Heidelberg (300 Euro im Monat, Bewerbung über die Uni), die Studienstiftung des deutschen Volkes (Selbstbewerbung im ersten oder zweiten Semester möglich) und die parteinahen und kirchlichen Begabtenförderungswerke. Die Bewerbung kostet vor allem Zeit, kein Geld, und ein Versuch schadet nie.</p>
+      <p>David ist Stipendiat der Studienstiftung und wurde beim Übergang vom ersten ins zweite Semester aufgenommen. Wenn ihr Fragen zur Bewerbung habt, fragt ihn.</p>
+      <div class="links">
+        <a href="https://www.studienstiftung.de/" target="_blank" rel="noopener">Studienstiftung des deutschen Volkes</a>
+        <a href="https://www.stipendienlotse.de/" target="_blank" rel="noopener">Stipendienlotse (Datenbank des BMBF)</a>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ============ PRÄPKURS ============ -->
+<section class="group" data-cat="praep" style="--c: var(--c-praep)">
+  <h2>Präpkurs</h2>
+  <p class="intro">Der Kurs, über den ihr im ersten Jahr am meisten reden werdet.</p>
+
+  <details class="q">
+    <summary>Was brauche ich für den Präpkurs?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Kittel, Namensschild, ein Zahlenschloss für den Spind und deutlich mehr Handschuhe als ihr denkt.</p>
+      <ul>
+        <li><strong>Zahlenschloss:</strong> Für den Spind im Präpsaal. Zahlenschloss statt Schlüssel, dann kann nichts verloren gehen und ihr könnt den Spind im Tisch teilen.</li>
+        <li><strong>Handschuhe:</strong> Nitril, in eurer Größe, gleich eine ganze Box. Ihr wechselt sie mehrmals pro Sitzung, und die Boxen im Saal sind schneller leer als ihr glaubt.</li>
+        <li><strong>Kittel und Namensschild:</strong> Siehe oben. Nehmt einen, den ihr danach entsorgen könnt.</li>
+        <li><strong>Kleidung darunter:</strong> Nichts, woran ihr hängt. Der Geruch geht nicht mehr raus.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary>Wie lerne ich Anatomie, ohne unterzugehen?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Aktiv statt passiv: zeichnen, in 3D anschauen, am Körperspender abfragen lassen.</p>
+      <ul>
+        <li><strong>Prometheus aktiv nutzen:</strong> Nicht nur anschauen. Gefäße und Nerven selbst nachzeichnen, Verlauf und Versorgungsgebiet dazuschreiben. Was man einmal gezeichnet hat, bleibt.</li>
+        <li><strong>3D-Atlas:</strong> Für räumliche Zusammenhänge (Beckenboden, Hirnnerven, Gefäßverläufe) ist ein 3D-Atlas auf dem Tablet fast unverzichtbar. Fragt in der Bibliothek nach Leih-iPads, bevor ihr selbst kauft.</li>
+        <li><strong>Am Körperspender abfragen:</strong> Zu zweit oder zu dritt am Tisch, einer fragt, die anderen zeigen. Das bringt mehr als jedes Buch und ist die beste Testatvorbereitung.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary>Gibt es Altprotokolle oder Gedächtnisprotokolle für die Testate?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Ja. Fragt eure Präptutor:innen, die wissen am besten, was bei welchem Prüfer drankommt.</p>
+      <p>Die Präptutor:innen sind Studierende aus höheren Semestern und betreuen euren Tisch. Sie haben die Testate selbst hinter sich und kennen oft Gedächtnisprotokolle. Weitere Protokolle und Zusammenfassungen findet ihr in der Fachschaftscloud und auf KreuzHub (siehe unten).</p>
+    </div>
+  </details>
+</section>
+
+<!-- ============ LERNEN UND MATERIAL ============ -->
+<section class="group" data-cat="lernen" style="--c: var(--c-lernen)">
+  <h2>Lernen und Material</h2>
+  <p class="intro">Was ihr braucht, was es kostenlos gibt und was ihr euch sparen könnt.</p>
+
+  <details class="q">
+    <summary>Muss ich Lehrbücher kaufen?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Nein. Fast alles gibt es über die UB als E-Book, über die Fachschaftscloud oder über Amboss.</p>
+      <p>Die Universitätsbibliothek hat die gängigen Lehrbücher (Prometheus, Duale Reihe, Physiologie, Biochemie) als E-Books lizenziert, abrufbar über den Katalog HEIDI aus dem Uni-Netz oder per VPN. Die Zweigstelle der UB im Neuenheimer Feld hat außerdem Präsenzexemplare.</p>
+      <p>Dazu kommt die Campuslizenz für Amboss: Alle Humanmedizinstudierenden der Fakultät Heidelberg bekommen kostenlosen Zugang. Zur ersten Aktivierung müsst ihr im Uni-Netz oder im VPN sein, danach geht es von überall.</p>
+      <p>Wenn ihr nach dem ersten Semester merkt, dass ihr ein bestimmtes Buch täglich aufschlagt, kauft es gebraucht. Vorher nicht.</p>
+      <div class="links">
+        <a href="https://katalog.ub.uni-heidelberg.de/" target="_blank" rel="noopener">HEIDI, der UB-Katalog</a>
+        <a href="https://www.ub.uni-heidelberg.de/" target="_blank" rel="noopener">Universitätsbibliothek Heidelberg</a>
+        <a href="https://www.amboss.com/de/campuslizenz/med-fak-heidelberg" target="_blank" rel="noopener">Amboss-Campuslizenz aktivieren</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary>Was ist die Fachschaftscloud und was finde ich dort?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Die gesammelten Materialien der höheren Semester: Anki-Decks, Zusammenfassungen, Bücher, Protokolle.</p>
+      <p>Dort landet, was Studierende vor euch erstellt haben: fertige Anki-Decks zu den Kursen, Zusammenfassungen, Altklausuren und Protokolle. Schaut vor jedem neuen Kurs einmal rein, bevor ihr selbst anfangt, Material zu erstellen. Oft gibt es schon etwas Gutes.</p>
+      <div class="links" data-link="fachschaftscloud"></div>
+      <div class="note" data-note="fachschaftscloud">Den Zugang bekommt ihr über die Fachschaft. Fragt uns, wenn ihr nicht reinkommt.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary>Was ist KreuzHub?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Die Kreuzplattform der Fachschaft für Altfragen aus Klausuren und Testaten, mit Lernstatistik und Erklärungen.</p>
+      <p>Kreuzen heißt: Multiple-Choice-Fragen aus alten Klausuren durcharbeiten. Das ist in der Vorklinik die effektivste Klausurvorbereitung, weil sich Fragen stark wiederholen. KreuzHub sammelt die Fragen der Heidelberger Kurse, zeigt euch, wo ihr steht, und verlinkt Fragen mit Erklärungen und Lernmaterial.</p>
+      <p>Offen gesagt: KreuzHub haben David und sein Bruder Emil zusammen mit der Fachschaft aufgebaut. Wenn etwas nicht funktioniert oder ihr Ideen habt, sagt es uns direkt.</p>
+      <div class="links" data-link="kreuzhub"></div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary>Anki: fertige Decks oder eigene Karten?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Beides ausprobieren. Die meisten landen bei einer Mischung.</p>
+      <p>Anki ist ein kostenloses Karteikartenprogramm mit Spaced Repetition: Karten, die ihr könnt, kommen seltener, schwere häufiger. Fertige Decks (aus der Fachschaftscloud oder das Amboss-Deck) sparen enorm Zeit, aber ihr lernt Karten, die jemand anderes für wichtig hielt. Eigene Karten dauern länger, sitzen aber besser, weil ihr sie beim Erstellen schon einmal durchdacht habt.</p>
+      <p>Unser Tipp: Mit einem fertigen Deck starten, und für alles, was ihr nicht versteht oder was in der Vorlesung betont wurde, eigene Karten ergänzen. Und täglich machen, sonst kippt der Stapel.</p>
+      <div class="links">
+        <a href="https://apps.ankiweb.net/" target="_blank" rel="noopener">Anki herunterladen (Desktop kostenlos)</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary>Brauche ich einen 3D-Anatomieatlas oder ein Tablet?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Ein 3D-Atlas hilft sehr. Ein Tablet ist praktisch, aber kein Muss. Erst die Leihgeräte der Bibliothek testen.</p>
+      <p>Für den Präpkurs lohnt sich ein 3D-Atlas (zum Beispiel Complete Anatomy oder Visible Body), weil ihr Strukturen drehen, ausblenden und in Schichten anschauen könnt. Viele nutzen dafür ein Tablet, auf dem auch Prometheus als E-Book und die Anki-App laufen. Bevor ihr Geld ausgebt: Die Bibliothek verleiht iPads, damit könnt ihr testen, ob euch die Arbeitsweise liegt.</p>
+      <div class="note">Fragt uns nach Studierendenrabatten und Jahreslizenzen, bevor ihr eine App kauft. Die Preise schwanken stark.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary>Zuhause oder in der Bibliothek lernen?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Probiert die Bibliothek mindestens einmal richtig aus, vor allem vor Klausuren.</p>
+      <p>In der Bib lernt es sich für viele konzentrierter, und ihr trefft Leute aus dem Kurs, mit denen ihr euch abfragen könnt. Die Zweigstelle im Neuenheimer Feld ist für die Vorklinik am nächsten, die Hauptbibliothek in der Altstadt ist schöner und hat längere Öffnungszeiten. Vor Klausuren wird es voll, dann früh kommen.</p>
+      <div class="links">
+        <a href="https://www.ub.uni-heidelberg.de/" target="_blank" rel="noopener">Öffnungszeiten und Standorte der UB</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary>Brauche ich ein Repetitorium?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Aus unserer Erfahrung nicht. Kreuzen, Anki und die Materialien der Fachschaft reichen.</p>
+      <p>Kommerzielle Repetitorien versprechen Struktur und kosten Geld. Die Struktur bekommt ihr aber auch über Amboss-Lernpläne, die Fachschaftscloud und KreuzHub, und das kostenlos. Wir kennen niemanden im Jahrgang, dem ein Repetitorium in der Vorklinik geholfen hätte, was Kreuzen nicht auch getan hätte. Das ist unsere Meinung, keine Regel.</p>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary>Woher weiß ich, was für die Klausur wirklich relevant ist?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Höhere Semester fragen. Zum Beispiel uns.</p>
+      <p>Die Vorlesungsfolien sind meist viel umfangreicher als das, was geprüft wird. Wer den Kurs schon hinter sich hat, weiß, welche Kapitel, Buchseiten und Themen immer wieder drankommen. Genau dafür sind wir da: Schreibt uns vor jeder Klausur, was ihr vorhabt, und wir sagen euch, wo ihr euch Zeit sparen könnt.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ============ NEBEN DEM STUDIUM ============ -->
+<section class="group" data-cat="leben" style="--c: var(--c-leben)">
+  <h2>Neben dem Studium</h2>
+  <p class="intro">Damit die nächsten Jahre nicht nur aus Präpsaal und Bib bestehen.</p>
+
+  <details class="q">
+    <summary>Wie funktioniert der Hochschulsport?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Riesiges Angebot, günstige Kursgebühren, Buchung öffnet am Sonntag vor Vorlesungsbeginn.</p>
+      <p>Der Hochschulsport der Uni Heidelberg bietet jedes Semester über hundert Kurse an, von Klettern über Yoga bis Rudern auf dem Neckar, größtenteils im Neuenheimer Feld direkt neben der Fakultät. Als Studierende braucht ihr keinen Sportausweis, nur den Studierendenausweis. Ihr legt online einen Account an, bucht den Kurs und überweist die Gebühr, danach holt ihr euch für jeden Termin ein Tagesticket in eurem Account.</p>
+      <p>Wichtig: Die Buchung für das Semesterprogramm öffnet am Sonntag vor Vorlesungsbeginn, und beliebte Kurse sind innerhalb von Minuten voll. Die Kurse starten in der zweiten Vorlesungswoche. Im Sommer gibt es außerdem ein kostenloses Outdoor-Programm ohne Anmeldung.</p>
+      <div class="links">
+        <a href="https://www.hochschulsport.uni-heidelberg.de/" target="_blank" rel="noopener">Hochschulsport Heidelberg</a>
+        <a href="https://www.hochschulsport.uni-heidelberg.de/de/teilnehmen/faq" target="_blank" rel="noopener">FAQ zur Anmeldung</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary>Wen frage ich, wenn ich nicht weiterweiß?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="a">
+      <p class="kurz">Erst uns. Dann die Fachschaft. Für alles Offizielle das Studiendekanat.</p>
+      <ul>
+        <li><strong>Buddies:</strong> Alles Allgemeine, Alltag, Lernstrategien, wo-finde-ich-was. Schreibt uns in der Gruppe oder privat.</li>
+        <li><strong>Fachschaft Medizin:</strong> Sprechstunde in der Vorlesungszeit dienstags 12:30 bis 14:00 Uhr und donnerstags 17:00 bis 18:30 Uhr im Fachschaftsraum (INF 306, Erdgeschoss, Raum 0.22, hinter Hörsaal 1). Bei Problemen im Buddy-Programm: buddies@fsmed-hd.de.</li>
+        <li><strong>Studiendekanat und Lehrsekretariate:</strong> Für verbindliche Auskünfte zu Prüfungen, Anerkennungen, Fristen und Krankmeldungen. Da dürfen und können wir nichts entscheiden.</li>
+      </ul>
+      <div class="links">
+        <a href="https://fsmed-hd.de/" target="_blank" rel="noopener">Fachschaft Medizin Heidelberg</a>
+        <a href="https://fsmed-hd.de/ersti/" target="_blank" rel="noopener">Ersti-Seite der Fachschaft</a>
+      </div>
+    </div>
+  </details>
+</section>
+
+<p class="empty" id="empty" hidden>Dazu haben wir noch keine Antwort. Schreib uns die Frage, dann kommt sie hier rein.</p>
+
+</main>
+
+<footer>
+  <p>Stand: September 2026. Zusammengestellt von Leonard Kobienia und David Vinu für ihre Buddy-Gruppe im Buddy-Programm der Fachschaft Medizin Heidelberg.</p>
+  <p>Fehler gefunden oder eine Frage, die fehlt? Sag uns Bescheid, wir pflegen die Seite weiter.</p>
+</footer>
+
+</div>
+
+<script>
+  // Links, die noch eingetragen werden müssen. Leer = Link wird nicht angezeigt.
+  const LINKS = {
+    fachschaftscloud: { url: "https://cloud.fsmed-hd.de/", label: "Zur Fachschaftscloud" },
+    kreuzhub:         { url: "https://kreuzhub.de/", label: "KreuzHub öffnen" }
+  };
+  for (const [key, cfg] of Object.entries(LINKS)) {
+    const box = document.querySelector(`[data-link="${key}"]`);
+    const note = document.querySelector(`[data-note="${key}"]`);
+    if (!box) continue;
+    if (cfg.url) {
+      const a = document.createElement("a");
+      a.href = cfg.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = cfg.label;
+      box.appendChild(a);
+      if (note) note.hidden = true;
+    } else {
+      box.remove();
+    }
+  }
+
+  const input = document.getElementById("search");
+  const clearBtn = document.getElementById("clear");
+  const searchbox = document.getElementById("searchbox");
+  const chips = [...document.querySelectorAll(".chip")];
+  const groups = [...document.querySelectorAll("section.group")];
+  const items = [...document.querySelectorAll("details.q")];
+  const countEl = document.getElementById("count");
+  const emptyEl = document.getElementById("empty");
+  const toggleAll = document.getElementById("toggleAll");
+  let activeCat = "all";
+
+  // Originaltext merken, damit Hervorhebungen zurückgesetzt werden können
+  items.forEach(d => {
+    d.dataset.text = (d.querySelector("summary").textContent + " " + d.querySelector(".a").textContent).toLowerCase();
+    d.querySelectorAll("summary, .a").forEach(el => el.dataset.orig = el.innerHTML);
+  });
+
+  function normalize(s) { return s.toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss"); }
+
+  function highlight(el, term) {
+    el.innerHTML = el.dataset.orig;
+    if (!term) return;
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    const re = new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(n => {
+      if (!re.test(n.nodeValue)) return;
+      const frag = document.createDocumentFragment();
+      let last = 0; re.lastIndex = 0; let m;
+      while ((m = re.exec(n.nodeValue))) {
+        frag.appendChild(document.createTextNode(n.nodeValue.slice(last, m.index)));
+        const mk = document.createElement("mark"); mk.textContent = m[0]; frag.appendChild(mk);
+        last = m.index + m[0].length;
+      }
+      frag.appendChild(document.createTextNode(n.nodeValue.slice(last)));
+      n.parentNode.replaceChild(frag, n);
+    });
+  }
+
+  function apply() {
+    const term = input.value.trim();
+    const nterm = normalize(term);
+    searchbox.classList.toggle("has-text", term.length > 0);
+    let visible = 0;
+    groups.forEach(g => {
+      let anyInGroup = 0;
+      const catOk = activeCat === "all" || g.dataset.cat === activeCat;
+      g.querySelectorAll("details.q").forEach(d => {
+        const textOk = !nterm || normalize(d.dataset.text).includes(nterm);
+        const show = catOk && textOk;
+        d.hidden = !show;
+        if (show) {
+          anyInGroup++;
+          d.querySelectorAll("summary, .a").forEach(el => highlight(el, term.length >= 2 ? term : ""));
+          if (term.length >= 2) d.open = true;
+        }
+      });
+      g.hidden = anyInGroup === 0;
+      visible += anyInGroup;
+    });
+    emptyEl.hidden = visible > 0;
+    countEl.textContent = visible === items.length ? `${items.length} Fragen` : `${visible} von ${items.length} Fragen`;
+  }
+
+  input.addEventListener("input", apply);
+  clearBtn.addEventListener("click", () => { input.value = ""; apply(); input.focus(); });
+  chips.forEach(c => c.addEventListener("click", () => {
+    chips.forEach(x => x.setAttribute("aria-pressed", x === c ? "true" : "false"));
+    activeCat = c.dataset.cat;
+    apply();
+    if (activeCat !== "all") {
+      const g = groups.find(x => x.dataset.cat === activeCat);
+      if (g) g.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    }
+  }));
+  toggleAll.addEventListener("click", () => {
+    const openAll = toggleAll.textContent === "Alle aufklappen";
+    items.forEach(d => { if (!d.hidden) d.open = openAll; });
+    toggleAll.textContent = openAll ? "Alle zuklappen" : "Alle aufklappen";
+  });
+  apply();
+</script>
+</body>
+</html>
