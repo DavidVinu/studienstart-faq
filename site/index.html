@@ -38,7 +38,7 @@
 
   .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 80px; }
 
-  /* Kopf */
+  /* Header */
   header { padding: 56px 0 28px; }
   .who { font-size: 15px; color: var(--ink-soft); margin: 0 0 18px; }
   h1 {
@@ -51,7 +51,7 @@
   }
   .lede { font-size: 19px; color: var(--ink-soft); margin: 0; max-width: 60ch; }
 
-  /* Suche + Filter */
+  /* Search and filters */
   .controls { position: sticky; top: 0; background: var(--paper); padding: 12px 0 14px; z-index: 5; border-bottom: 1px solid var(--line); }
   .search {
     display: flex; align-items: center; gap: 10px;
@@ -75,7 +75,7 @@
   .meta { display: flex; justify-content: space-between; align-items: baseline; margin-top: 12px; font-size: 14px; color: var(--ink-soft); }
   .meta button { border: 0; background: transparent; color: var(--ink-soft); cursor: pointer; font: inherit; font-size: 14px; text-decoration: underline; text-underline-offset: 3px; padding: 0; }
 
-  /* Gruppen */
+  /* Groups */
   section.group { margin-top: 40px; }
   section.group h2 {
     font-family: var(--serif); font-weight: 600; font-size: 22px; margin: 0 0 4px;
@@ -85,7 +85,7 @@
   section.group .intro { margin: 0 0 14px; color: var(--ink-soft); font-size: 15px; }
   section.group[hidden] { display: none; }
 
-  /* Fragen */
+  /* Questions */
   details.q { border-top: 1px solid var(--line); }
   details.q:last-child { border-bottom: 1px solid var(--line); }
   details.q[hidden] { display: none; }
@@ -161,7 +161,7 @@
 
 <main id="faq">
 
-<!-- ============ VOR DEM START ============ -->
+<!-- ============ start: before the semester begins ============ -->
 <section class="group" data-cat="start" style="--c: var(--c-start)">
   <h2>Vor dem Start</h2>
   <p class="intro">Dinge, die ihr am besten vor der ersten Vorlesung erledigt habt.</p>
@@ -229,7 +229,7 @@
   </details>
 </section>
 
-<!-- ============ PRÄPKURS ============ -->
+<!-- ============ praep: dissection course ============ -->
 <section class="group" data-cat="praep" style="--c: var(--c-praep)">
   <h2>Präpkurs</h2>
   <p class="intro">Der Kurs, über den ihr im ersten Jahr am meisten reden werdet.</p>
@@ -268,7 +268,7 @@
   </details>
 </section>
 
-<!-- ============ LERNEN UND MATERIAL ============ -->
+<!-- ============ lernen: studying and material ============ -->
 <section class="group" data-cat="lernen" style="--c: var(--c-lernen)">
   <h2>Lernen und Material</h2>
   <p class="intro">Was ihr braucht, was es kostenlos gibt und was ihr euch sparen könnt.</p>
@@ -357,7 +357,7 @@
   </details>
 </section>
 
-<!-- ============ NEBEN DEM STUDIUM ============ -->
+<!-- ============ leben: life alongside studies ============ -->
 <section class="group" data-cat="leben" style="--c: var(--c-leben)">
   <h2>Neben dem Studium</h2>
   <p class="intro">Damit die nächsten Jahre nicht nur aus Präpsaal und Bib bestehen.</p>
@@ -404,7 +404,8 @@
 </div>
 
 <script>
-  // Links, die noch eingetragen werden müssen. Leer = Link wird nicht angezeigt.
+  // Fills the link boxes marked with data-link. An empty url removes the box and
+  // leaves the note next to it in place.
   const LINKS = {
     fachschaftscloud: { url: "https://cloud.fsmed-hd.de/", label: "Zur Fachschaftscloud" },
     kreuzhub:         { url: "https://kreuzhub.de/", label: "KreuzHub öffnen" }
@@ -434,7 +435,7 @@
   const toggleAll = document.getElementById("toggleAll");
   let activeCat = "all";
 
-  // Originaltext merken, damit Hervorhebungen zurückgesetzt werden können
+  // Keep the original markup so search highlights can be reset
   items.forEach(d => {
     d.dataset.text = (d.querySelector("summary").textContent + " " + d.querySelector(".a").textContent).toLowerCase();
     d.querySelectorAll("summary, .a").forEach(el => el.dataset.orig = el.innerHTML);
