@@ -31,3 +31,7 @@ Needs a Cloudflare account with access to the Pages project.
 
 The answers are the personal experience of the authors, not official information from the
 university or the Fachschaft.
+
+## License
+
+AGPL-3.0-or-later, Copyright (C) 2026 David Vinu.
