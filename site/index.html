@@ -43,9 +43,8 @@
     font-size: clamp(34px, 6vw, 48px);
     line-height: 1.08;
     letter-spacing: -0.01em;
-    margin: 0 0 16px;
+    margin: 0;
   }
-  .lede { font-size: 19px; color: var(--ink-soft); margin: 0; max-width: 60ch; }
 
   /* Search and filters */
   .controls { position: sticky; top: 0; background: var(--paper); padding: 12px 0 14px; z-index: 5; border-bottom: 1px solid var(--line); }
@@ -72,9 +71,8 @@
   /* Groups */
   section.group { margin-top: 56px; }
   section.group h2 {
-    font-family: var(--serif); font-weight: 600; font-size: 22px; margin: 0 0 4px;
+    font-family: var(--serif); font-weight: 600; font-size: 22px; margin: 0 0 14px;
   }
-  section.group .intro { margin: 0 0 14px; color: var(--ink-soft); font-size: 15px; }
   section.group[hidden] { display: none; }
 
   /* Questions */
@@ -113,7 +111,6 @@
     body { font-size: 16px; }
     header { padding-top: 36px; }
     details.q summary { font-size: 18px; }
-    .lede { font-size: 17px; }
   }
   @media print {
     .controls { display: none; }
@@ -128,7 +125,6 @@
 <header>
   <p class="who">Von Leonard und David, eure Buddies der Fachschaft Medizin Heidelberg</p>
   <h1>Fragen, die wir im ersten Semester gerne früher beantwortet gehabt hätten.</h1>
-  <p class="lede">Alles hier ist Erfahrung aus dem ersten Studienjahr, keine offizielle Auskunft. Wenn etwas fehlt oder nicht mehr stimmt, schreibt uns.</p>
 </header>
 
 <div class="controls">
@@ -155,13 +151,13 @@
 <!-- ============ start: before the semester begins ============ -->
 <section class="group" data-cat="start">
   <h2>Vor dem Start</h2>
-  <p class="intro">Dinge, die ihr am besten vor der ersten Vorlesung erledigt habt.</p>
 
   <details class="q">
     <summary>Was sollte ich mit meiner Uni-ID sofort einrichten?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
     <div class="a">
       <p class="kurz">Uni-Mail, eduroam, heiCO und Microsoft 365. Moodle wird in der Erstiwoche freigeschaltet.</p>
-      <p>Die Uni-ID bekommt ihr mit der Immatrikulation, sie steht auch auf dem Studierendenausweis. Damit laufen fast alle Dienste: Uni-Mail (bitte regelmäßig lesen, die Fakultät kommuniziert fast nur darüber), das WLAN eduroam, das Campus-Portal heiCO, Moodle für Kursmaterial und die Cloud heiBOX.</p>
+      <p>Die Uni-ID bekommt ihr mit der Immatrikulation, sie steht auch auf dem Studierendenausweis. Damit laufen fast alle Dienste: Uni-Mail, das WLAN eduroam, das Campus-Portal heiCO, Moodle für Kursmaterial und die Cloud heiBOX.</p>
+      <p>Die Fakultät kommuniziert fast nur über die Uni-Mail. Richtet am besten gleich eine Weiterleitung an eure private Adresse ein, dann lest ihr sie auch regelmäßig.</p>
       <p>Microsoft 365 (Word, Excel, PowerPoint, OneNote, Teams) ist für Studierende kostenlos, muss aber einmalig über das Lizenzportal der Uni freigeschaltet werden. Das geht nur aus dem Uni-Netz oder per VPN. Installieren dürft ihr es auf bis zu fünf Geräten.</p>
       <div class="links">
         <a href="https://www.urz.uni-heidelberg.de/de/newsroom/studienstart-informationen-fuer-studierende" target="_blank" rel="noopener">URZ: Studienstart-Infos</a>
@@ -223,7 +219,6 @@
 <!-- ============ praep: dissection course ============ -->
 <section class="group" data-cat="praep">
   <h2>Präpkurs</h2>
-  <p class="intro">Der Kurs, über den ihr im ersten Jahr am meisten reden werdet.</p>
 
   <details class="q">
     <summary>Was brauche ich für den Präpkurs?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
@@ -262,7 +257,6 @@
 <!-- ============ lernen: studying and material ============ -->
 <section class="group" data-cat="lernen">
   <h2>Lernen und Material</h2>
-  <p class="intro">Was ihr braucht, was es kostenlos gibt und was ihr euch sparen könnt.</p>
 
   <details class="q">
     <summary>Muss ich Lehrbücher kaufen?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
@@ -351,7 +345,6 @@
 <!-- ============ leben: life alongside studies ============ -->
 <section class="group" data-cat="leben">
   <h2>Neben dem Studium</h2>
-  <p class="intro">Damit die nächsten Jahre nicht nur aus Präpsaal und Bib bestehen.</p>
 
   <details class="q">
     <summary>Wie funktioniert der Hochschulsport?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
@@ -388,7 +381,7 @@
 </main>
 
 <footer>
-  <p>Stand: September 2026. Zusammengestellt von Leonard Kobienia und David Vinu für ihre Buddy-Gruppe im Buddy-Programm der Fachschaft Medizin Heidelberg.</p>
+  <p>Stand: September 2026. Zusammengestellt von Leonard Kobienia und David Vinu.</p>
   <p>Fehler gefunden oder eine Frage, die fehlt? Sag uns Bescheid, wir pflegen die Seite weiter.</p>
 </footer>
 
