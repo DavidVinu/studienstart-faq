@@ -3,20 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14181e" media="(prefers-color-scheme: dark)">
 <title>Studienstart Medizin Heidelberg: Fragen und Antworten</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400&family=Source+Sans+3:wght@400&display=swap" rel="stylesheet">
 <style>
   :root {
+    color-scheme: light dark;
     --ink: #1c2430;
     --ink-soft: #5b6573;
     --paper: #ffffff;
-    --surface: #f3f5f7;
     --line: #dde2e8;
     --red: #b5121b;
     --focus: #1e3a5f;
+    --placeholder: #98a1ac;
+    --mark: #fbe4e5;
     --serif: "Source Serif 4", "Iowan Old Style", "Charter", Georgia, serif;
     --sans: "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e6e9ee;
+      --ink-soft: #9aa4b1;
+      --paper: #14181e;
+      --line: #2c333d;
+      --red: #f0727b;
+      --focus: #8fb3e6;
+      --placeholder: #6f7885;
+      --mark: #5c2328;
+    }
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
@@ -55,7 +72,7 @@
   .search:focus-within { border-color: var(--ink); }
   .search svg { flex: none; color: var(--ink-soft); }
   .search input { flex: 1; border: 0; outline: 0; font: inherit; font-size: 17px; background: transparent; color: var(--ink); min-width: 0; }
-  .search input::placeholder { color: #98a1ac; }
+  .search input::placeholder { color: var(--placeholder); }
   .search button { border: 0; background: transparent; color: var(--ink-soft); cursor: pointer; font: inherit; padding: 2px 4px; display: none; }
   .search.has-text button { display: inline; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
@@ -64,7 +81,7 @@
     border: 1px solid var(--line); background: var(--paper); color: var(--ink);
     padding: 5px 12px; border-radius: 2px;
   }
-  .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
   .meta { display: flex; justify-content: space-between; align-items: baseline; margin-top: 12px; font-size: 14px; color: var(--ink-soft); }
   .meta button { border: 0; background: transparent; color: var(--ink-soft); cursor: pointer; font: inherit; font-size: 14px; text-decoration: underline; text-underline-offset: 3px; padding: 0; }
 
@@ -96,7 +113,7 @@
   .a li { margin-bottom: 6px; }
   .kurz::before { content: "Kurz: "; color: var(--ink-soft); }
   .links { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 12px; font-size: 15px; }
-  mark { background: #fbe4e5; color: inherit; padding: 0 1px; border-radius: 2px; }
+  mark { background: var(--mark); color: inherit; padding: 0 1px; border-radius: 2px; }
 
   .empty { margin-top: 48px; color: var(--ink-soft); }
   .empty[hidden] { display: none; }
